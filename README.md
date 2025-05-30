@@ -1,17 +1,17 @@
 # Simple Todo App
 
-Give a brief description of the project here. Feel free to give it a different name.
+The simple ToDo App is a user-friendly to do list app built with JavaScript. It helps users to manage their task by adding, managaging, and organizing their tasks effordtlessly.
 
 ## Functionality
 
-Give a more detailed explanation of the project and its functionality.
+Simple ToDo App helps users to manage their task by adding, managaging, and organizing their tasks effordtlessly.
 
 ## Technology
 
-Give a description of the technologies and techniques used. Pictures, GIFs, or screenshots that detail the project features are recommended.
+This project is developed with HTML, CSS, and JavaScript. It implements modern JavaScript, including classes, modules, and arrow functions to keep the code clean and modular.
 
 ## Deployment
 
 This project is deployed on GitHub Pages:
 
-- ADD LINK HERE
+https://rubbs.github.io/se_project_todo-app/
