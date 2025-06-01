@@ -37,24 +37,16 @@ class FormValidator {
     this._inputList = Array.from(
       this._formElement.querySelectorAll(this._inputSelector)
     );
-
-    this._toggleButtonState(
-      this._inputList,
-      this._formElement.querySelector(this._submitButtonSelector),
-      { inactiveButtonClass: this._inactiveButtonClass }
+    this._buttonElement = this._formElement.querySelector(
+      this._submitButtonSelector
     );
+
+    this._toggleButtonState();
 
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
         this._checkInputValidity(inputElement);
-
-        this._toggleButtonState(
-          this._inputList,
-          this._formElement.querySelector(this._submitButtonSelector),
-          {
-            inactiveButtonClass: this._inactiveButtonClass,
-          }
-        );
+        this._toggleButtonState();
       });
     });
   }
@@ -66,16 +58,16 @@ class FormValidator {
     this._setEventListeners();
   }
 
-  _toggleButtonState(inputList, buttonElement, { inactiveButtonClass }) {
-    const hasInvalidInput = inputList.some(
+  _toggleButtonState() {
+    const hasInvalidInput = this._inputList.some(
       (inputElement) => !inputElement.validity.valid
     );
     if (hasInvalidInput) {
-      buttonElement.classList.add(inactiveButtonClass);
-      buttonElement.disabled = true;
+      this._buttonElement.classList.add(this._inactiveButtonClass);
+      this._buttonElement.disabled = true;
     } else {
-      buttonElement.classList.remove(inactiveButtonClass);
-      buttonElement.disabled = false;
+      this._buttonElement.classList.remove(this._inactiveButtonClass);
+      this._buttonElement.disabled = false;
     }
   }
   resetValidation() {
@@ -83,11 +75,7 @@ class FormValidator {
       this._hideInputError(inputElement);
       inputElement.value = "";
     });
-    const buttonElement = this._formElement.querySelector(
-      this._submitButtonSelector
-    );
-    buttonElement.classList.add(this._inactiveButtonClass);
-    buttonElement.disabled = true;
+    this._toggleButtonState();
   }
 }
 

@@ -29,14 +29,19 @@ class Todo {
 
     const todoNameEl = this._todoElement.querySelector(".todo__name");
     const todoDate = this._todoElement.querySelector(".todo__date");
-    const todoDeleteBtn = this._todoElement.querySelector(".todo__delete-btn");
 
     todoNameEl.textContent = this._data.name;
-    todoDate.textContent = new Date(this._data.date).toLocaleString("en-US", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    });
+
+    const rawDate = new Date(this._data.date);
+    if (!isNaN(rawDate)) {
+      todoDate.textContent = `Due: ${rawDate.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      })}`;
+    } else {
+      todoDate.textContent = "No date set";
+    }
 
     this._generateCheckboxEl();
     this._setEventListeners();
@@ -44,5 +49,4 @@ class Todo {
     return this._todoElement;
   }
 }
-
 export default Todo;
