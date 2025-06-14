@@ -24,7 +24,7 @@ class Popup {
     this.popupElement.addEventListener("mousedown", (evt) => {
       if (
         evt.target === this.popupElement ||
-        evt.target.closest("popup__close")
+        evt.target.closest(".popup__close")
       ) {
         this.close();
       }
