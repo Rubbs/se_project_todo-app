@@ -1,7 +1,6 @@
 class Popup {
   constructor({ popupSelector }) {
     this.popupElement = document.querySelector(popupSelector);
-    this._popupCloseButton = this.popupElement.querySelector(".popup__close");
     this._handleEscapeCloseBound = this._handleEscapeClose.bind(this);
   }
 
@@ -24,7 +23,7 @@ class Popup {
     this.popupElement.addEventListener("mousedown", (evt) => {
       if (
         evt.target === this.popupElement ||
-        evt.target.closest(".popup__close")
+        evt.target.classList.contains("popup__close")
       ) {
         this.close();
       }
